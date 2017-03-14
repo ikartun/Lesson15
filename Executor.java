@@ -6,10 +6,10 @@ public class Executor {
 		int[][] firstMatrix = null;
 		int[][] secondMatrix = null;
 		
-		firstMatrix = Util.fill(firstMatrix, 3);
-		secondMatrix = Util.fill(secondMatrix, 3);
+		firstMatrix = Util.fill(firstMatrix, 100);
+		secondMatrix = Util.fill(secondMatrix, 100);
 		
-		ThreadElementManipulator threadElementManipulator = new ThreadElementManipulator(2, firstMatrix, secondMatrix);
+		ThreadElementManipulator threadElementManipulator = new ThreadElementManipulator(11, firstMatrix, secondMatrix);
 		int[][] resultMatrix = threadElementManipulator.multiply();
 		
 		Util.print(firstMatrix);

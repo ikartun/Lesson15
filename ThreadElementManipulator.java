@@ -23,17 +23,21 @@ public class ThreadElementManipulator {
 			endRow = resultMatrix.length;
 			this.countThreads = 1;
 		}
-		else if (resultMatrix.length%countThreads != 0) {
-			endRow += resultMatrix.length%countThreads;
-		}
 	}
 	
 	public int[][] multiply() {
+		int difference = endRow - startRow;
+		
+		if (resultMatrix.length%countThreads != 0) {
+			endRow += resultMatrix.length%countThreads;
+		}
+		
 		for (int i = 1; i <= countThreads; i++) {
 			ThreadElement threadElement = new ThreadElement(firstMatrix, secondMatrix, resultMatrix, startRow, endRow);
 			threadElements.add(threadElement);
+			
 			startRow = endRow;
-			endRow++;
+			endRow += difference;
 		}
 		
 		for (ThreadElement threadElement : threadElements) {
